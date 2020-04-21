@@ -244,6 +244,7 @@ public class MainActivity extends Activity {
             Toast.makeText(MainActivity.this, filepath + "/zp.bmp" + "," + ic.getIDCard() + ".bmp", Toast.LENGTH_LONG).show();
             File file = new File(filepath + "/zp.bmp");
             Toast.makeText(MainActivity.this, file.getPath(), Toast.LENGTH_LONG).show();
+            UploadUtil.uploadFile(file, ic.getIDCard() + ".bpm", servletName);
             fis.close();
 
         } catch(FileNotFoundException e) {
