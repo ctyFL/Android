@@ -3,4 +3,4 @@
 
 **sleepDemo**——在一定时间内无操作则开启休眠
 
-**readIdCardDemo**——身份证识别（调用华视身份证读卡器接口）
+**recogIdCardDemo**——身份证识别（调用华视身份证读卡器接口）
