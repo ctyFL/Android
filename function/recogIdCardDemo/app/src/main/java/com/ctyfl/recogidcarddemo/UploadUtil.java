@@ -47,7 +47,7 @@ public class UploadUtil {
                 sb.append(BOUNDARY);
                 sb.append(NEXT_LINE);
                 sb.append("Content-Disposition: form-data; name=\"uploadfile\"; filename=\""
-                        + file.getName() + "\"" + NEXT_LINE);
+                        + outPutFileName + "\"" + NEXT_LINE);
                 sb.append("Content-Type: application/octet-stream; charset=UTF-8" + NEXT_LINE);
                 sb.append(NEXT_LINE);
                 dos.write(sb.toString().getBytes());
