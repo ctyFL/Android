@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HttpTestActivity">
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="368dp"
+        android:text="filepath:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <Button
+        android:id="@+id/btn_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="httpGet"
+        app:layout_constraintStart_toStartOf="@+id/btn_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="httpPost"
+        app:layout_constraintStart_toStartOf="@+id/btn_get"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get" />
+
+    <Button
+        android:id="@+id/btn_post_uploadFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="postUpload"
+        app:layout_constraintStart_toStartOf="@+id/btn_post"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post" />
+
+    <ImageView
+        android:id="@+id/img_localImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_getFilePath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="获取文件路径名"
+        app:layout_constraintStart_toStartOf="@+id/btn_post_uploadFile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post_uploadFile" />
+
+    <Button
+        android:id="@+id/btn_getLocalImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取本地图片"
+        app:layout_constraintStart_toStartOf="@+id/btn_getFilePath"
+        app:layout_constraintTop_toBottomOf="@+id/btn_getFilePath" />
+
+    <Button
+        android:id="@+id/btn_getRootPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取根路径"
+        app:layout_constraintStart_toStartOf="@+id/btn_post_uploadFile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post_uploadFile" />
+
+    <TextView
+        android:id="@+id/text_rootPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="384dp"
+        android:text="rootPath:"
+        app:layout_constraintStart_toStartOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

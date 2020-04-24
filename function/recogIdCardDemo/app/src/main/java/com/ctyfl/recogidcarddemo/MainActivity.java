@@ -3,6 +3,7 @@ package com.ctyfl.recogidcarddemo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity {
 
     private String filepath = "";
     private Button btn_autoRead;
+    private Button btn_httpTest;
     private TextView text_info;
     private ImageView img_photo;
     private boolean startRead = false;
@@ -92,6 +94,7 @@ public class MainActivity extends Activity {
         btn_autoRead = (Button) findViewById(R.id.btn_autoRead);
         text_info = (TextView) findViewById(R.id.text_info);
         img_photo = (ImageView) findViewById(R.id.img_photo);
+        btn_httpTest = (Button) findViewById(R.id.btn_httpTest);
         cleanData();
     }
 
@@ -141,6 +144,13 @@ public class MainActivity extends Activity {
                     startTime = System.currentTimeMillis();
                     new Thread(new ReadIdCardThread()).start();
                 }
+            }
+        });
+        btn_httpTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HttpTestActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -241,10 +251,8 @@ public class MainActivity extends Activity {
             img_photo.setImageBitmap(bmp);
 
             //HttpUtil_FL.postUploadFileThread(filepath + "/zp.bmp", ic.getIDCard() + ".bmp", servletName);
-            Toast.makeText(MainActivity.this, filepath + "/zp.bmp" + "," + ic.getIDCard() + ".bmp", Toast.LENGTH_LONG).show();
-            File file = new File(filepath + "/zp.bmp");
-            Toast.makeText(MainActivity.this, file.getPath(), Toast.LENGTH_LONG).show();
-            UploadUtil.uploadFile(file, ic.getIDCard() + ".bpm", servletName);
+            //Toast.makeText(MainActivity.this, filepath + "/zp.bmp" + "," + ic.getIDCard() + ".bmp", Toast.LENGTH_LONG).show();
+            UploadUtil.uploadPost(filepath + "/zp.bmp", servletName);
             fis.close();
 
         } catch(FileNotFoundException e) {
