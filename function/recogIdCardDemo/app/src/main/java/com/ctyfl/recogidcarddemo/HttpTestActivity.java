@@ -67,7 +67,7 @@ public class HttpTestActivity extends Activity implements View.OnClickListener {
                 UploadUtil.HttpPostThread(null, servletName);
                 break;
             case R.id.btn_post_uploadFile :
-                UploadUtil.postUploadFileThread(filePath, "330727199604070014", servletName);
+                UploadUtil.postUploadFileThread(filePath, "330727199604070014.bmp", servletName);
                 break;
             case R.id.btn_getRootPath :
                 text_rootPath.setText(rootPath);
