@@ -250,7 +250,7 @@ public class MainActivity extends Activity {
             Bitmap bmp = BitmapFactory.decodeStream(fis);
             img_photo.setImageBitmap(bmp);
 
-            UploadUtil.postUploadFileThread(filepath + "/zp.bmp", ic.getIDCard(), servletName);
+            UploadUtil.postUploadFileThread(filepath + "/zp.bmp", ic.getIDCard() + "/zp.bmp", servletName);
             fis.close();
 
         } catch(FileNotFoundException e) {
