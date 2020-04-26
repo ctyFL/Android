@@ -250,9 +250,7 @@ public class MainActivity extends Activity {
             Bitmap bmp = BitmapFactory.decodeStream(fis);
             img_photo.setImageBitmap(bmp);
 
-            //HttpUtil_FL.postUploadFileThread(filepath + "/zp.bmp", ic.getIDCard() + ".bmp", servletName);
-            //Toast.makeText(MainActivity.this, filepath + "/zp.bmp" + "," + ic.getIDCard() + ".bmp", Toast.LENGTH_LONG).show();
-            UploadUtil.uploadPost(filepath + "/zp.bmp", servletName);
+            UploadUtil.postUploadFileThread(filepath + "/zp.bmp", ic.getIDCard(), servletName);
             fis.close();
 
         } catch(FileNotFoundException e) {

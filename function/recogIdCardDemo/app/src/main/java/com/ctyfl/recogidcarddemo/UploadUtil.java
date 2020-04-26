@@ -1,7 +1,5 @@
 package com.ctyfl.recogidcarddemo;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -13,11 +11,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * @Author ctyFL
@@ -68,12 +64,12 @@ public class UploadUtil {
      * @param filePath
      * @param url
      */
-    public static void postUploadFileThread(final String filePath, final String url) {
+    public static void postUploadFileThread(final String filePath, final String saveName, final String url) {
         Thread thread = new Thread() {
             @Override
             public void run() {
                 super.run();
-                uploadPost(filePath, url);
+                uploadPost(filePath, saveName, url);
             }
         };
         thread.start();
@@ -84,7 +80,7 @@ public class UploadUtil {
      * @param filePath
      * @param url
      */
-    public static String uploadPost(String filePath, String url) {
+    private static void uploadPost(String filePath, String saveName, String url) {
         DataOutputStream out = null;
         DataInputStream in = null;
         String result = "";
@@ -114,7 +110,7 @@ public class UploadUtil {
             sb.append(boundaryPrefix);
             sb.append(BOUNDARY);
             sb.append(nextLine);
-            sb.append("Content-Disposition: form-data; name=\"file\";filename=\"" + file.getName() + "\"");
+            sb.append("Content-Disposition: form-data; name=\"file\";filename=\"" + saveName + "\"");
             sb.append(nextLine);
             sb.append("Content-Type:application/octet-stream");
             sb.append(nextLine);
@@ -155,7 +151,6 @@ public class UploadUtil {
             }
         }
         System.out.println("result：" + result);
-        return result;
     }
 
     /**
@@ -163,7 +158,7 @@ public class UploadUtil {
      * @param paramsMap
      * @param url
      */
-    public static String HttpGet(Map<String, String> paramsMap, String url) {
+    private static void HttpGet(Map<String, String> paramsMap, String url) {
         url = url + "?" + getParamString(paramsMap);
         String result = "";
         HttpURLConnection conn = null;
@@ -181,7 +176,6 @@ public class UploadUtil {
             }
         }
         System.out.println("result：" + result);
-        return result;
     }
 
     /**
@@ -189,7 +183,7 @@ public class UploadUtil {
      * @param paramsMap
      * @param url
      */
-    public static String HttpPost(Map<String, String> paramsMap, String url) {
+    private static void HttpPost(Map<String, String> paramsMap, String url) {
         HttpURLConnection conn = null;
         PrintWriter writer = null;
         String result = "";
@@ -211,7 +205,6 @@ public class UploadUtil {
             }
         }
         System.out.println("result：" + result);
-        return result;
     }
 
     /**

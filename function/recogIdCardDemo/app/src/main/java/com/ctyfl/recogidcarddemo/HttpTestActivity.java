@@ -6,26 +6,18 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.FileInputStream;
 
 public class HttpTestActivity extends Activity implements View.OnClickListener {
 
     private TextView text_filepath;
     private TextView text_rootPath;
-//    private Button btn_back;
-//    private Button btn_httpGet;
-//    private Button btn_httpPost;
-//    private Button btn_postUpload;
-//    private Button btn_getRootPath
     private ImageView img_localImg;
 
     private String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wltlib";// 授权目录
-    private String servletName ="http://192.168.10.153:9100/AriesFL/ReceiveFileServlet";
+    private String servletName = "http://192.168.10.153:9100/AriesFL/ReceiveFileServlet";
     private String filePath = "";
 
     @Override
@@ -39,11 +31,14 @@ public class HttpTestActivity extends Activity implements View.OnClickListener {
     private void initView() {
         text_filepath = (TextView) findViewById(R.id.text_path);
         text_rootPath = (TextView) findViewById(R.id.text_rootPath);
-//        btn_back = (Button) findViewById(R.id.btn_back);
-//        btn_httpGet = (Button) findViewById(R.id.btn_get);
-//        btn_httpPost = (Button) findViewById(R.id.btn_post);
-//        btn_postUpload = (Button) findViewById(R.id.btn_post_uploadFile);
         img_localImg = (ImageView) findViewById(R.id.img_localImg);
+        findViewById(R.id.btn_back).setOnClickListener(this);
+        findViewById(R.id.btn_get).setOnClickListener(this);
+        findViewById(R.id.btn_post).setOnClickListener(this);
+        findViewById(R.id.btn_post_uploadFile).setOnClickListener(this);
+        findViewById(R.id.btn_getRootPath).setOnClickListener(this);
+        findViewById(R.id.btn_getFilePath).setOnClickListener(this);
+        findViewById(R.id.btn_getLocalImg).setOnClickListener(this);
     }
 
     private void setLocalImg() {
@@ -65,13 +60,13 @@ public class HttpTestActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.btn_get :
-                Toast.makeText(HttpTestActivity.this, UploadUtil.HttpGet(null, servletName), Toast.LENGTH_LONG).show();
+               UploadUtil.HttpGetThread(null, servletName);
                 break;
             case R.id.btn_post :
-                Toast.makeText(HttpTestActivity.this, UploadUtil.HttpPost(null, servletName), Toast.LENGTH_LONG).show();
+                UploadUtil.HttpPostThread(null, servletName);
                 break;
             case R.id.btn_post_uploadFile :
-                Toast.makeText(HttpTestActivity.this, UploadUtil.uploadPost(filePath, servletName), Toast.LENGTH_LONG).show();
+                UploadUtil.postUploadFileThread(filePath, "330727199604070014", servletName);
                 break;
             case R.id.btn_getRootPath :
                 text_rootPath.setText(rootPath);
