@@ -47,6 +47,7 @@ public class HttpTestActivity extends Activity implements View.OnClickListener {
                 FileInputStream fis = new FileInputStream(filePath);
                 Bitmap bmp = BitmapFactory.decodeStream(fis);
                 img_localImg.setImageBitmap(bmp);
+                fis.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
